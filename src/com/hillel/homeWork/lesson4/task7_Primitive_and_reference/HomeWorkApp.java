@@ -8,9 +8,9 @@ public class HomeWorkApp {
     public static void main(String[] args) {
 
         printThreeWords();
-        checkSumSign(100, -100);
-        printColor(100);
-        compareNumbers(10, 10);
+        checkSumSign();
+        printColor();
+        compareNumbers();
         System.out.println(checkingNumInterval(9));
         positiveOrNegative(0);
         System.out.println(isNegative(-10));
@@ -36,7 +36,9 @@ public class HomeWorkApp {
      * то вывести в консоль сообщение У—умма положительна€Ф, в противном случае - У—умма отрицательна€Ф;
      */
 
-    public static void checkSumSign(int a, int b) {
+    public static void checkSumSign() {
+        int a = 1;
+        int b = 2;
         int result = a + b;
         if (result >= 0) {
             System.out.println("—умма положительна€");
@@ -52,7 +54,8 @@ public class HomeWorkApp {
      * то У∆елтыйФ, если больше 100 (100 исключительно) - У«еленыйФ;
      */
 
-    public static void printColor(int value) {
+    public static void printColor() {
+        int value = 100;
         if (value <= 0) {
             System.out.println(" рассный");
         } else if (value > 0 && value <= 100) {
@@ -68,7 +71,9 @@ public class HomeWorkApp {
      * то необходимо вывести в консоль сообщение Уa >= bФ, в противном случае Уa < bФ;
      */
 
-    public static void compareNumbers(int a, int b) {
+    public static void compareNumbers() {
+        int a =100;
+        int b = 101;
         if (a >= b) {
             System.out.println("a >= b");
         } else {
