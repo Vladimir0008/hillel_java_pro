@@ -1,6 +1,6 @@
 package com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.obstacles;
 
-import obstaclecourse.members.Member;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.members.Member;
 
 public class Wall extends Obstacle {
 
