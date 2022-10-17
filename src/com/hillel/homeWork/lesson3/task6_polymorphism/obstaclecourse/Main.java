@@ -1,12 +1,12 @@
 package com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse;
 
-import obstaclecourse.members.Cat;
-import obstaclecourse.members.Human;
-import obstaclecourse.members.Member;
-import obstaclecourse.members.Robot;
-import obstaclecourse.obstacles.Obstacle;
-import obstaclecourse.obstacles.RunningTrack;
-import obstaclecourse.obstacles.Wall;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.members.Cat;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.members.Human;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.members.Member;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.members.Robot;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.obstacles.Obstacle;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.obstacles.RunningTrack;
+import com.hillel.homeWork.lesson3.task6_polymorphism.obstaclecourse.obstacles.Wall;
 
 import java.util.ArrayList;
 import java.util.List;
