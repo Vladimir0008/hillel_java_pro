@@ -16,11 +16,11 @@ public class WordsGame {
 
         String randomWord = words[random.nextInt(words.length)];
         System.out.println("Компьютер загадал слово, попробуй отгадать его!");
-        Boolean isGuessed = false; //Переменная для выгода из цыкла
+        Boolean isGuessed = false; //Variable for exit from loop
         char[] guessedLetters = {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'};
 
-        //Запускаем бесконечный цикл до тех пор пока слово не будет отгадано.
-        //Определяем слово, которое короче, чтобы не выйти за рамки вложенного цикла
+        //We start an endless loop until the word is guessed.
+        //Define a word that is shorter so as not to go beyond the nested loop
         while (!isGuessed) {
             String inputWord = scanner.nextLine();
             int count = 0;
@@ -30,17 +30,17 @@ public class WordsGame {
                 count = randomWord.length();
             }
 
-            //Цикл для сравнения введенного слова с загаданным и записи угаданных букв
+            //Loop for comparing the entered word with the guessed one and writing the guessed letters
             for (int i = 0; i < count; i++) {
                 if (inputWord.toCharArray()[i] == randomWord.toCharArray()[i]) {
                     guessedLetters[i] = inputWord.toCharArray()[i];
                 }
             }
 
-            //Проверяем угаданные буквы. В случае, еси слово угаданное, то выходим из цикла и поздравляем победителя)
+            //Check the guessed letters. In case, if the word is guessed we finish the loop and congratulate the winner)
             if (inputWord.equals(randomWord)) {
-                isGuessed = true;
                 System.out.println("Поздравляю, Вы угадали слово! Это слово - " + randomWord);
+                isGuessed = true; //Assign to a variable isGuessed value for exit from the loop. There is the end of our program
             } else {
                 System.out.println("Угаданные буквы:");
                 System.out.println(Arrays.toString(guessedLetters));
