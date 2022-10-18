@@ -23,28 +23,26 @@ public class WordsGame {
         //Define a word that is shorter so as not to go beyond the nested loop
         while (!isGuessed) {
             String inputWord = scanner.nextLine();
-            int count = 0;
-            if (randomWord.length() >= inputWord.length()) {
-                count = inputWord.length();
-            } else {
-                count = randomWord.length();
-            }
 
             //Check the guessed letters. In case, if the word is guessed we finish the loop and congratulate the winner)
             if (inputWord.equals(randomWord)) {
                 System.out.println("Congratulations, you have guessed the word! This word - " + randomWord);
                 isGuessed = true; //Assign to a variable isGuessed value for exit from the loop. There is the end of our program
             } else {
+                int count = 0;
+                if (randomWord.length() >= inputWord.length()) {
+                    count = inputWord.length();
+                } else {
+                    count = randomWord.length();
+                }
                 //Loop for comparing the entered word with the guessed one and writing the guessed letters
                 for (int i = 0; i < count; i++) {
                     if (inputWord.toCharArray()[i] == randomWord.toCharArray()[i]) {
                         guessedLetters[i] = inputWord.toCharArray()[i];
                     }
                 }
-
                 System.out.println("Guessed letters:");
                 System.out.println(Arrays.toString(guessedLetters));
-
             }
         }
     }
