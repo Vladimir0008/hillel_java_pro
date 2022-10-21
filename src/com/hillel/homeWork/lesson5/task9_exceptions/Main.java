@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         String[][] arr = new String[][]{{"1", "2", "3", "4"}, {"1", "2", "3", "4"},
-                                        {"101", "102", "103", "104"}, {"201", "202", "203", "204"}};
+                                        {"101", "102", "103", "104"}, {"201", "202", "203", "aaa"}};
 
         try {
             System.out.println(ArrayValueCalculator.doCalc(arr));
