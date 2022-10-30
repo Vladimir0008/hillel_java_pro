@@ -1,33 +1,29 @@
 package com.hillel.homeWork.lesson7.logger;
 
-import com.hillel.homeWork.lesson7.formatter.FileFormatter;
-import com.hillel.homeWork.lesson7.formatter.Formatter;
-
-import java.io.File;
 
 public class FileLoggerConfiguration {
 
-    private File file = new File("src/com/hillel/homeWork/lesson7/log.txt");
-    private LoggingLevel level = LoggingLevel.INFO;
-    private long maxFileSize = 1270;
-    private Formatter formatter = new FileFormatter();
+    private String filePath;
+    private LoggingLevel level;
+    private int maxFileSize;
+    private String format;
 
     public FileLoggerConfiguration() {
     }
 
-    public FileLoggerConfiguration(File file, LoggingLevel level, byte maxLogFileSize, Formatter formatter) {
-        this.file = file;
+    public FileLoggerConfiguration(String filePath, LoggingLevel level, byte maxLogFileSize, String format) {
+        this.filePath = filePath;
         this.level = level;
         this.maxFileSize = maxLogFileSize;
-        this.formatter = formatter;
+        this.format = format;
     }
 
-    public File getFile() {
-        return file;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public LoggingLevel getLevel() {
@@ -42,15 +38,15 @@ public class FileLoggerConfiguration {
         return maxFileSize;
     }
 
-    public void setMaxLogFileSize(byte maxLogFileSize) {
+    public void setMaxLogFileSize(int maxLogFileSize) {
         this.maxFileSize = maxLogFileSize;
     }
 
-    public Formatter getFormatter() {
-        return formatter;
+    public String getFormat() {
+        return format;
     }
 
-    public void setFormatter(Formatter formatter) {
-        this.formatter = formatter;
+    public void setFormat(String format) {
+        this.format = format;
     }
 }

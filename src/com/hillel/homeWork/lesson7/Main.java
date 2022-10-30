@@ -3,26 +3,17 @@ package com.hillel.homeWork.lesson7;
 import com.hillel.homeWork.lesson7.exceptions.FileMaxSizeReachedException;
 import com.hillel.homeWork.lesson7.logger.FileLogger;
 import com.hillel.homeWork.lesson7.logger.FileLoggerConfiguration;
+import com.hillel.homeWork.lesson7.logger.FileLoggerConfigurationLoader;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileMaxSizeReachedException {
 
-        FileLogger fileLogger = new FileLogger(new FileLoggerConfiguration());
+        FileLoggerConfigurationLoader configLoader = new FileLoggerConfigurationLoader();
+        FileLoggerConfiguration config = configLoader.load("src/com/hillel/homeWork/lesson7/inputConfigFile.txt");
+        FileLogger logger = new FileLogger(config);
 
-
-        try {
-            fileLogger.debug("Some DEBUG message");
-        } catch (FileMaxSizeReachedException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            fileLogger.info("Some INFO message");
-        } catch (FileMaxSizeReachedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(fileLogger.getFileLoggerConfiguration().getFile().length());
+            logger.info("info message");
+            logger.debug("debug message");
 
     }
 }
