@@ -1,0 +1,5 @@
+FILE: src/com/hillel/homeWork/lesson7/log.txt
+LEVEL: INFO
+MAX_SIZE: 500
+FORMAT: [%s][%s][Massage: %s]%n
+

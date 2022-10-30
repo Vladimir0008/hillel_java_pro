@@ -1,0 +1,3 @@
+[2022-10-30 21:27:31][INFO][Massage: info message]
+[2022-10-30 21:27:37][INFO][Massage: info message]
+[2022-10-30 21:27:42][INFO][Massage: info message]
