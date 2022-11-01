@@ -1,17 +1,17 @@
 package com.hillel.homeWork.lesson7.logger;
 
 
-public class FileLoggerConfiguration {
+public class LoggerConfiguration {
 
     private String filePath;
     private LoggingLevel level;
     private int maxFileSize;
     private String format;
 
-    public FileLoggerConfiguration() {
+    public LoggerConfiguration() {
     }
 
-    public FileLoggerConfiguration(String filePath, LoggingLevel level, byte maxLogFileSize, String format) {
+    public LoggerConfiguration(String filePath, LoggingLevel level, byte maxLogFileSize, String format) {
         this.filePath = filePath;
         this.level = level;
         this.maxFileSize = maxLogFileSize;

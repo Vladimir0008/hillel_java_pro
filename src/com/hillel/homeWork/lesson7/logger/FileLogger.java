@@ -1,40 +1,28 @@
 package com.hillel.homeWork.lesson7.logger;
 
-import com.hillel.homeWork.lesson7.exceptions.FileMaxSizeReachedException;
-
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLogger extends Logger {
 
-    public FileLogger(FileLoggerConfiguration fileLoggerConfiguration) {
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    public FileLogger(LoggerConfiguration fileLoggerConfiguration) {
         super(fileLoggerConfiguration);
     }
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     public void debug(String message) {
-
-        if (fileLoggerConfiguration.getLevel().equals(LoggingLevel.DEBUG)) {
-
-            try {
+        if (loggerConfiguration.getLevel().equals(LoggingLevel.DEBUG)) {
                 log(LoggingLevel.DEBUG, message);
-            } catch (FileMaxSizeReachedException e) {
-                e.printStackTrace();
-            }
         }
     }
 
     public void info(String message) {
-        try {
             log(LoggingLevel.INFO, message);
-        } catch (FileMaxSizeReachedException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void createFile(FileLoggerConfiguration fileLoggerConfiguration) {
+    public void createFile(LoggerConfiguration fileLoggerConfiguration) {
         fileLoggerConfiguration.setFilePath(fileLoggerConfiguration.getFilePath().replaceFirst(fileLoggerConfiguration
                         .getFilePath().substring(fileLoggerConfiguration.getFilePath()
                                 .lastIndexOf("/") + 1,
@@ -43,34 +31,28 @@ public class FileLogger extends Logger {
                 "log_" + LocalDateTime.now().format( DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"))));
     }
 
-    public void log(LoggingLevel loggingLevel, String message) throws FileMaxSizeReachedException {
-
-        if (fileLoggerConfiguration.getFilePath().length() > fileLoggerConfiguration.getMaxLogFileSize()) {
-            throw new FileMaxSizeReachedException("Maximum file size exceeded [" +
-                    fileLoggerConfiguration.getMaxLogFileSize() + " bytes] \n Path: " +
-                    fileLoggerConfiguration.getFilePath());
-        } else {
+    public void log(LoggingLevel loggingLevel, String message) {
             BufferedWriter writer = null;
             try {
-                if (new File(fileLoggerConfiguration.getFilePath()).length() >= fileLoggerConfiguration.getMaxLogFileSize()) {
-                    createFile(fileLoggerConfiguration);
+                if (new File(loggerConfiguration.getFilePath()).length() >= loggerConfiguration.getMaxLogFileSize()) {
+                    createFile(loggerConfiguration);
                 }
                 writer = new BufferedWriter(new OutputStreamWriter(
-                        new FileOutputStream(new File(fileLoggerConfiguration.getFilePath()), true)));
+                        new FileOutputStream(new File(loggerConfiguration.getFilePath()), true)));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             try {
-                writer.write(String.format(fileLoggerConfiguration.getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
+                writer.write(String.format(loggerConfiguration.getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
                 writer.flush();
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
 
-    public FileLoggerConfiguration getFileLoggerConfiguration() {
-        return fileLoggerConfiguration;
+
+    public LoggerConfiguration getFileLoggerConfiguration() {
+        return loggerConfiguration;
     }
 }
