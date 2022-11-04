@@ -2,9 +2,7 @@ package com.hillel.homeWork.lesson8.task11;
 
 public class ValueCalculator {
     private float[] array = new float[1000000];
-
     private int arraySize = array.length;
-
     private int halfArraySize = array.length / 2;
 
     public void doCalc() throws InterruptedException {
