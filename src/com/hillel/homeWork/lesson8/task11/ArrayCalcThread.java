@@ -2,7 +2,7 @@ package com.hillel.homeWork.lesson8.task11;
 
 public class ArrayCalcThread implements Runnable{
 
-    float[] array;
+    private float[] array;
 
     public ArrayCalcThread(float[] array) {
         this.array = array;
