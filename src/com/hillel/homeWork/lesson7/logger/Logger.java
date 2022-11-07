@@ -1,10 +1,13 @@
 package com.hillel.homeWork.lesson7.logger;
 
+import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
+import com.hillel.homeWork.lesson7.config.LoggingLevel;
+
 import java.time.format.DateTimeFormatter;
 
 public abstract class Logger {
 
-    protected LoggerConfiguration loggerConfiguration;
+    private LoggerConfiguration loggerConfiguration;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public Logger(LoggerConfiguration loggerConfiguration) {

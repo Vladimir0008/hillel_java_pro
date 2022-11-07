@@ -1,5 +1,8 @@
 package com.hillel.homeWork.lesson7.logger;
 
+import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
+import com.hillel.homeWork.lesson7.config.LoggingLevel;
+
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +16,7 @@ public class FileLogger extends Logger {
     }
 
     public void debug(String message) {
-        if (loggerConfiguration.getLevel().equals(LoggingLevel.DEBUG)) {
+        if (super.getLoggerConfiguration().getLevel().equals(LoggingLevel.DEBUG)) {
                 log(LoggingLevel.DEBUG, message);
         }
     }
@@ -34,16 +37,16 @@ public class FileLogger extends Logger {
     public void log(LoggingLevel loggingLevel, String message) {
             BufferedWriter writer = null;
             try {
-                if (new File(loggerConfiguration.getFilePath()).length() >= loggerConfiguration.getMaxLogFileSize()) {
-                    createFile(loggerConfiguration);
+                if (new File(super.getLoggerConfiguration().getFilePath()).length() >= super.getLoggerConfiguration().getMaxLogFileSize()) {
+                    createFile(super.getLoggerConfiguration());
                 }
                 writer = new BufferedWriter(new OutputStreamWriter(
-                        new FileOutputStream(new File(loggerConfiguration.getFilePath()), true)));
+                        new FileOutputStream(new File(super.getLoggerConfiguration().getFilePath()), true)));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             try {
-                writer.write(String.format(loggerConfiguration.getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
+                writer.write(String.format(super.getLoggerConfiguration().getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
                 writer.flush();
                 writer.close();
             } catch (IOException e) {
@@ -53,6 +56,6 @@ public class FileLogger extends Logger {
 
 
     public LoggerConfiguration getFileLoggerConfiguration() {
-        return loggerConfiguration;
+        return super.getLoggerConfiguration();
     }
 }

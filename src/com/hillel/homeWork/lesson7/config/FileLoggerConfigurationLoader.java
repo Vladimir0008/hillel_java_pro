@@ -1,10 +1,10 @@
-package com.hillel.homeWork.lesson7.logger;
+package com.hillel.homeWork.lesson7.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class FileLoggerConfigurationLoader {
+public class FileLoggerConfigurationLoader extends ConfigurationLoader{
 
     private FileInputStream fileInputStream;
     private Properties properties = new Properties();
