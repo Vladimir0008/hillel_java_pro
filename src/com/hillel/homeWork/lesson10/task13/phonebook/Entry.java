@@ -1,4 +1,4 @@
-package com.hillel.homeWork.lesson10.phonebook;
+package com.hillel.homeWork.lesson10.task13.phonebook;
 
 public class Entry {
     private String name;
