@@ -1,39 +1,41 @@
 package com.hillel.homeWork.lesson11.coffee.order;
 
+import com.hillel.homeWork.lesson11.coffee.order.exception.OrderNumberException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoffeeOrderBoard {
     private List<Order> orderList = new ArrayList<>();
-    private int lastOrder = orderList.size();
+    private int orderCount = 0;
 
     public void add(String personName) {
-        orderList.add(new Order(orderList.size() + 1, personName));
-        lastOrder++;
+        orderList.add(new Order(getNextOrderNumber(), personName));
+        orderCount++;
     }
 
     public void deliver() {
         if (orderList.size() > 0) {
-            for (int i = 1; i < orderList.size(); i++) {
-                orderList.get(i).setOrderNumber(i);
-            }
             orderList.remove(0);
-            lastOrder--;
+            orderCount--;
         } else {
             throw new ArrayIndexOutOfBoundsException("Our queue is empty!");
         }
     }
 
-    public void deliver(int orderNumber) {
-        if (!(orderNumber > 0 && orderNumber <= getLastOrder())) {
-            throw new ArrayIndexOutOfBoundsException("Desired order doesn't exist!");
-        } else {
-            for (int i = orderNumber; i < orderList.size(); i++) {
-                orderList.get(i).setOrderNumber(i);
+    public void deliver(int orderNumber) throws OrderNumberException {
+        int requiredOrderIndex = -1;
+
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getOrderNumber() == orderNumber) {
+                requiredOrderIndex = i;
             }
-            orderList.remove(orderNumber - 1);
-            lastOrder--;
         }
+       if(requiredOrderIndex == -1) {
+            throw new OrderNumberException("Our order list does not have an order with required number.");
+        }
+        orderList.remove(requiredOrderIndex);
+        orderCount--;
     }
 
     public void draw() {
@@ -42,11 +44,18 @@ public class CoffeeOrderBoard {
         }
     }
 
+    public int getNextOrderNumber() {
+        if (orderList.size() > 0) {
+            return orderList.get(orderList.size() - 1).getOrderNumber() + 1;
+        }
+        return 1;
+    }
+
     public List<Order> getOrderList() {
         return orderList;
     }
 
-    public int getLastOrder() {
-        return lastOrder;
+    public int getOrderCount() {
+        return orderCount;
     }
 }
