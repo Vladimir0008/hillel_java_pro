@@ -7,17 +7,15 @@ import java.util.List;
 
 public class CoffeeOrderBoard {
     private List<Order> orderList = new ArrayList<>();
-    private int orderCount = 0;
+    private int orderCount = 1;
 
     public void add(String personName) {
-        orderList.add(new Order(getNextOrderNumber(), personName));
-        orderCount++;
+        orderList.add(new Order(orderCount++, personName));
     }
 
     public void deliver() {
         if (orderList.size() > 0) {
             orderList.remove(0);
-            orderCount--;
         } else {
             throw new ArrayIndexOutOfBoundsException("Our queue is empty!");
         }
@@ -35,7 +33,6 @@ public class CoffeeOrderBoard {
             throw new OrderNumberException("Our order list does not have an order with required number.");
         }
         orderList.remove(requiredOrderIndex);
-        orderCount--;
     }
 
     public void draw() {

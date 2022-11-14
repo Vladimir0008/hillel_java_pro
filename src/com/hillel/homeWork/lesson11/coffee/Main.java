@@ -32,6 +32,9 @@ public class Main {
         coffeeOrderBoard.draw();
 
 
+        coffeeOrderBoard.deliver(8);
+        System.out.println();
+        coffeeOrderBoard.draw();
     }
 }
 
