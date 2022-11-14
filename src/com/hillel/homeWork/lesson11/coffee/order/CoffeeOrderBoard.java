@@ -41,13 +41,6 @@ public class CoffeeOrderBoard {
         }
     }
 
-    public int getNextOrderNumber() {
-        if (orderList.size() > 0) {
-            return orderList.get(orderList.size() - 1).getOrderNumber() + 1;
-        }
-        return 1;
-    }
-
     private List<Order> getOrderList() {
         return orderList;
     }

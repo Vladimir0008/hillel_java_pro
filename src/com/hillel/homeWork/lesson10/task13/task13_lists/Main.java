@@ -2,8 +2,6 @@ package com.hillel.homeWork.lesson10.task13.task13_lists;
 
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,11 +21,11 @@ public class Main {
         System.out.println(list.size());
 
         //Point3
-        Set<Integer> set = listSandbox.findUniqueInt(initInputData.getListTask3());
+        List<Integer> set = listSandbox.findUniqueInt(initInputData.getListTask3());
         System.out.println(set);
 
         //Point4
-        Map<String, Integer> map = listSandbox.findOccurrence(initInputData.getListTask1());
-        System.out.println(map);
+        List<WordOccurrence> wordOccurrenceList = listSandbox.findOccurrence(initInputData.getListTask1());
+        System.out.println(wordOccurrenceList);
     }
 }

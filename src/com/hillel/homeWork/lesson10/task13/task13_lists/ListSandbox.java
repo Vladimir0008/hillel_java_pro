@@ -22,25 +22,28 @@ public class ListSandbox {
         return result;
     }
 
-    public Set<Integer> findUniqueInt(List<Integer> list) {
-        Set<Integer> result = new HashSet<>();
-        result.addAll(list);
+    public List<Integer> findUniqueInt(List<Integer> list) {
+        List<Integer> result = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
+        set.addAll(list);
+        result.addAll(set);
         return result;
     }
 
-    public Set<String> findUniqueString(List<String> list) {
-        Set<String> result = new HashSet<>();
-        result.addAll(list);
+    public List<String> findUniqueString(List<String> list) {
+        List<String> result = new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        set.addAll(list);
+        result.addAll(set);
         return result;
     }
 
-    public Map<String, Integer> findOccurrence(List<String> list) {
-        Map<String, Integer> result = new HashMap<>();
-        Set<String> set = findUniqueString(list);
+    public List<WordOccurrence> findOccurrence(List<String> list) {
+        List<WordOccurrence> wordOccurrenceList = new ArrayList<>();
 
-        for (String e : set) {
-            result.put(e, countOccurrence(list, e));
+        for (String uniqueWord : findUniqueString(list)) {
+            wordOccurrenceList.add(new WordOccurrence(uniqueWord, countOccurrence(list, uniqueWord)));
         }
-        return result;
+        return wordOccurrenceList;
     }
 }
