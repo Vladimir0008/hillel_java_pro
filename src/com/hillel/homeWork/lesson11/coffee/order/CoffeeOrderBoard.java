@@ -51,7 +51,7 @@ public class CoffeeOrderBoard {
         return 1;
     }
 
-    public List<Order> getOrderList() {
+    private List<Order> getOrderList() {
         return orderList;
     }
 
