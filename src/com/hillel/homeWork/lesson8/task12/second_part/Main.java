@@ -7,9 +7,9 @@ public class Main {
         Semaphore petrolStationSemaphore = new Semaphore(3);
         PetrolStation petrolStation = new PetrolStation(100);
 
-        PetrolStationClient petrolStationClient1 = new PetrolStationClient(10,petrolStationSemaphore,petrolStation);
-        PetrolStationClient petrolStationClient2 = new PetrolStationClient(50,petrolStationSemaphore,petrolStation);
-        PetrolStationClient petrolStationClient3 = new PetrolStationClient(20,petrolStationSemaphore,petrolStation);
+        PetrolStationClient petrolStationClient1 = new PetrolStationClient(100,petrolStationSemaphore,petrolStation);
+        PetrolStationClient petrolStationClient2 = new PetrolStationClient(100,petrolStationSemaphore,petrolStation);
+        PetrolStationClient petrolStationClient3 = new PetrolStationClient(100,petrolStationSemaphore,petrolStation);
         PetrolStationClient petrolStationClient4 = new PetrolStationClient(25,petrolStationSemaphore,petrolStation);
         PetrolStationClient petrolStationClient5 = new PetrolStationClient(20,petrolStationSemaphore,petrolStation);
         PetrolStationClient petrolStationClient6 = new PetrolStationClient(40,petrolStationSemaphore,petrolStation);

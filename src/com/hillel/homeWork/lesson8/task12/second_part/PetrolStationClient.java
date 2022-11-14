@@ -20,9 +20,10 @@ public class PetrolStationClient implements Runnable {
             petrolStation.doRefuel(fuelOrder);
             System.out.println("Client have driven away from the petrol station.");
             System.out.println("Petrol station have " + petrolStation.getFuelAmount() + " litres of fuel.");
-            petrolStationSemaphore.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            petrolStationSemaphore.release();
         }
     }
 
