@@ -1,4 +1,4 @@
-package com.hillel.homeWork.lesson10.task13_lists;
+package com.hillel.homeWork.lesson10.task13.task13_lists;
 
 public class WordOccurrence {
     private String name;
