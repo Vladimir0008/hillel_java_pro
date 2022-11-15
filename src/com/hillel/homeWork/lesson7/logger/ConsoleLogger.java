@@ -1,21 +1,19 @@
 package com.hillel.homeWork.lesson7.logger;
 
-import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
+import com.hillel.homeWork.lesson7.config.ConsoleLoggerConfiguration;
 import com.hillel.homeWork.lesson7.config.LoggingLevel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ConsoleLogger extends Logger {
-
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    public ConsoleLogger(LoggerConfiguration loggerConfiguration) {
-        super(loggerConfiguration);
+    public ConsoleLogger(ConsoleLoggerConfiguration consoleLoggerConfiguration) {
+        super(consoleLoggerConfiguration);
     }
 
     public void debug(String message) {
-        if (super.getLoggerConfiguration().getLevel().equals(LoggingLevel.DEBUG)) {
+        if (getConsoleLoggerConfiguration().getLevel().equals(LoggingLevel.DEBUG)) {
             log(LoggingLevel.DEBUG, message);
         }
     }
@@ -25,11 +23,11 @@ public class ConsoleLogger extends Logger {
     }
 
     public void log(LoggingLevel loggingLevel, String message) {
-        System.out.println(String.format(super.getLoggerConfiguration().getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
+        System.out.println(String.format(getConsoleLoggerConfiguration().getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
     }
 
-    public LoggerConfiguration getFileLoggerConfiguration() {
-        return super.getLoggerConfiguration();
+    public ConsoleLoggerConfiguration getConsoleLoggerConfiguration() {
+        return (ConsoleLoggerConfiguration) super.getLoggerConfiguration();
     }
 }
 

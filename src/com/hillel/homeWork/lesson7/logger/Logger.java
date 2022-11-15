@@ -14,6 +14,7 @@ public abstract class Logger {
         this.loggerConfiguration = loggerConfiguration;
     }
 
+
     public abstract void debug(String message);
 
     public abstract void info(String message);
@@ -23,5 +24,6 @@ public abstract class Logger {
     public LoggerConfiguration getLoggerConfiguration() {
         return loggerConfiguration;
     }
+
 }
 

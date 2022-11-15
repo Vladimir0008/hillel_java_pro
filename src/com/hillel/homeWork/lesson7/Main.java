@@ -1,7 +1,9 @@
 package com.hillel.homeWork.lesson7;
 
+import com.hillel.homeWork.lesson7.config.ConsoleLoggerConfiguration;
+import com.hillel.homeWork.lesson7.config.ConsoleLoggerConfigurationLoader;
+import com.hillel.homeWork.lesson7.config.FileLoggerConfiguration;
 import com.hillel.homeWork.lesson7.config.FileLoggerConfigurationLoader;
-import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
 import com.hillel.homeWork.lesson7.logger.ConsoleLogger;
 import com.hillel.homeWork.lesson7.logger.FileLogger;
 import com.hillel.homeWork.lesson7.logger.Logger;
@@ -10,17 +12,18 @@ public class Main {
     public static void main(String[] args) {
 
         FileLoggerConfigurationLoader configLoader = new FileLoggerConfigurationLoader();
-        LoggerConfiguration config = configLoader.load();
-        Logger logger = new ConsoleLogger(config);
-        Logger logger2 = new FileLogger(config);
+        FileLoggerConfiguration config = configLoader.load();
 
-        logger.info("info message");
-        logger.debug("debug message");
+        ConsoleLoggerConfigurationLoader consoleConfigLoader = new ConsoleLoggerConfigurationLoader();
+        ConsoleLoggerConfiguration config1 = consoleConfigLoader.load();
 
-        logger2.info("info message");
-        logger2.debug("debug message");
+        Logger logger1 = new FileLogger(config);
+        Logger logger2 = new ConsoleLogger(config1);
 
-        Object[] arr = new Object[10];
-        System.out.println(arr.length);
+        logger1.info("info message to file");
+        logger1.debug("debug message to file");
+
+        logger2.info("info message to console");
+        logger2.debug("debug message to console");
     }
 }

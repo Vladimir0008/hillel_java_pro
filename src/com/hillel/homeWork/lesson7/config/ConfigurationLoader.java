@@ -1,6 +1,5 @@
 package com.hillel.homeWork.lesson7.config;
 
-public abstract class ConfigurationLoader {
-
+interface ConfigurationLoader {
     public abstract LoggerConfiguration load();
 }

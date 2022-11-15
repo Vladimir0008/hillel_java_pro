@@ -1,29 +1,15 @@
 package com.hillel.homeWork.lesson7.config;
 
-
-public class LoggerConfiguration {
-
-    private String filePath;
+public abstract class LoggerConfiguration {
     private LoggingLevel level;
-    private int maxFileSize;
     private String format;
 
-    public LoggerConfiguration() {
-    }
-
-    public LoggerConfiguration(String filePath, LoggingLevel level, byte maxLogFileSize, String format) {
-        this.filePath = filePath;
+    public LoggerConfiguration(LoggingLevel level, String format) {
         this.level = level;
-        this.maxFileSize = maxLogFileSize;
         this.format = format;
     }
 
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public LoggerConfiguration() {
     }
 
     public LoggingLevel getLevel() {
@@ -32,14 +18,6 @@ public class LoggerConfiguration {
 
     public void setLevel(LoggingLevel level) {
         this.level = level;
-    }
-
-    public long getMaxLogFileSize() {
-        return maxFileSize;
-    }
-
-    public void setMaxLogFileSize(int maxLogFileSize) {
-        this.maxFileSize = maxLogFileSize;
     }
 
     public String getFormat() {

@@ -1,7 +1,0 @@
-[2022-10-30 21:27:31][INFO][Massage: info message]
-[2022-10-30 21:27:37][INFO][Massage: info message]
-[2022-10-30 21:27:42][INFO][Massage: info message]
-[2022-11-01 20:34:07][INFO][Massage: info message]
-[2022-11-01 20:34:07][DEBUG][Massage: debug message]
-[2022-11-05 12:13:03][INFO][Massage: info message]
-[2022-11-05 12:13:03][DEBUG][Massage: debug message]

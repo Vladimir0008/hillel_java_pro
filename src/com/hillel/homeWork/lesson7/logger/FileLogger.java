@@ -1,6 +1,6 @@
 package com.hillel.homeWork.lesson7.logger;
 
-import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
+import com.hillel.homeWork.lesson7.config.FileLoggerConfiguration;
 import com.hillel.homeWork.lesson7.config.LoggingLevel;
 
 import java.io.*;
@@ -8,10 +8,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLogger extends Logger {
-
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public FileLogger(LoggerConfiguration fileLoggerConfiguration) {
+    public FileLogger(FileLoggerConfiguration fileLoggerConfiguration) {
         super(fileLoggerConfiguration);
     }
 
@@ -25,8 +24,9 @@ public class FileLogger extends Logger {
             log(LoggingLevel.INFO, message);
     }
 
-    public void createFile(LoggerConfiguration fileLoggerConfiguration) {
-        fileLoggerConfiguration.setFilePath(fileLoggerConfiguration.getFilePath().replaceFirst(fileLoggerConfiguration
+    public void createFile(FileLoggerConfiguration fileLoggerConfiguration) {
+        fileLoggerConfiguration.setFilePath(fileLoggerConfiguration.getFilePath()
+                .replaceFirst(fileLoggerConfiguration
                         .getFilePath().substring(fileLoggerConfiguration.getFilePath()
                                 .lastIndexOf("/") + 1,
                         fileLoggerConfiguration.getFilePath()
@@ -37,16 +37,16 @@ public class FileLogger extends Logger {
     public void log(LoggingLevel loggingLevel, String message) {
             BufferedWriter writer = null;
             try {
-                if (new File(super.getLoggerConfiguration().getFilePath()).length() >= super.getLoggerConfiguration().getMaxLogFileSize()) {
-                    createFile(super.getLoggerConfiguration());
+                if (new File(getFileLoggerConfiguration().getFilePath()).length() >= getFileLoggerConfiguration().getMaxLogFileSize()) {
+                    createFile(getFileLoggerConfiguration());
                 }
                 writer = new BufferedWriter(new OutputStreamWriter(
-                        new FileOutputStream(new File(super.getLoggerConfiguration().getFilePath()), true)));
+                        new FileOutputStream(new File(getFileLoggerConfiguration().getFilePath()), true)));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             try {
-                writer.write(String.format(super.getLoggerConfiguration().getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
+                writer.write(String.format(getFileLoggerConfiguration().getFormat(), LocalDateTime.now().format(formatter), loggingLevel, message));
                 writer.flush();
                 writer.close();
             } catch (IOException e) {
@@ -55,7 +55,7 @@ public class FileLogger extends Logger {
         }
 
 
-    public LoggerConfiguration getFileLoggerConfiguration() {
-        return super.getLoggerConfiguration();
+    public FileLoggerConfiguration getFileLoggerConfiguration() {
+        return (FileLoggerConfiguration) super.getLoggerConfiguration();
     }
 }
