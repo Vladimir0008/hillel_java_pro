@@ -1,28 +1,26 @@
 package com.hillel.homeWork.lesson7;
 
-import com.hillel.homeWork.lesson7.exceptions.FileMaxSizeReachedException;
+import com.hillel.homeWork.lesson7.config.FileLoggerConfigurationLoader;
+import com.hillel.homeWork.lesson7.config.LoggerConfiguration;
+import com.hillel.homeWork.lesson7.logger.ConsoleLogger;
 import com.hillel.homeWork.lesson7.logger.FileLogger;
-import com.hillel.homeWork.lesson7.logger.FileLoggerConfiguration;
+import com.hillel.homeWork.lesson7.logger.Logger;
 
 public class Main {
     public static void main(String[] args) {
 
-        FileLogger fileLogger = new FileLogger(new FileLoggerConfiguration());
+        FileLoggerConfigurationLoader configLoader = new FileLoggerConfigurationLoader();
+        LoggerConfiguration config = configLoader.load();
+        Logger logger = new ConsoleLogger(config);
+        Logger logger2 = new FileLogger(config);
 
+        logger.info("info message");
+        logger.debug("debug message");
 
-        try {
-            fileLogger.debug("Some DEBUG message");
-        } catch (FileMaxSizeReachedException e) {
-            e.printStackTrace();
-        }
+        logger2.info("info message");
+        logger2.debug("debug message");
 
-        try {
-            fileLogger.info("Some INFO message");
-        } catch (FileMaxSizeReachedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(fileLogger.getFileLoggerConfiguration().getFile().length());
-
+        Object[] arr = new Object[10];
+        System.out.println(arr.length);
     }
 }
