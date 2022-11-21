@@ -8,6 +8,7 @@ public class Main {
         Sorting sorting = new Sorting();
         sorting.sort(array);
         System.out.println(Arrays.toString(sorting.sort(array)));
+
     }
 
 }
