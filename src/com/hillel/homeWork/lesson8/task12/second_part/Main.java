@@ -5,7 +5,7 @@ public class Main {
         PetrolStation petrolStation = new PetrolStation(100);
 
         PetrolStationClient petrolStationClient1 = new PetrolStationClient(10,petrolStation);
-        PetrolStationClient petrolStationClient2 = new PetrolStationClient(20,petrolStation);
+        PetrolStationClient petrolStationClient2 = new PetrolStationClient(30,petrolStation);
         PetrolStationClient petrolStationClient3 = new PetrolStationClient(30,petrolStation);
         PetrolStationClient petrolStationClient4 = new PetrolStationClient(25,petrolStation);
         PetrolStationClient petrolStationClient5 = new PetrolStationClient(20,petrolStation);

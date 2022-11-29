@@ -10,10 +10,7 @@ public class PetrolStationClient implements Runnable {
     }
 
     public void run() {
-        System.out.println("Client have driven to the petrol station.");
         petrolStation.doRefuel(fuelOrder);
-        System.out.println("Client have driven away from the petrol station.");
-        System.out.println("Petrol station have " + petrolStation.getFuelAmount() + " litres of fuel.");
     }
 
     public int getFuelOrder() {
