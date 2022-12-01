@@ -5,87 +5,90 @@ import com.hillel.homeWork.lesson16.practicum.MathOperation;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class MathOperationTest {
-    ItemSource mockAWSItemSource = new MockAWSItemSource(new ArrayList<>());
-    MathOperation mathOperation = new MathOperation(mockAWSItemSource);
 
     @Test
     public void testSumNormalOrder() {
-        mockAWSItemSource.getItems().add(1);
-        mockAWSItemSource.getItems().add(2);
-        mockAWSItemSource.getItems().add(3);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(1,2,3));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(6, mathOperation.sum());
     }
 
     @Test
     public void testSumReverseOrder() {
-        mockAWSItemSource.getItems().add(3);
-        mockAWSItemSource.getItems().add(2);
-        mockAWSItemSource.getItems().add(1);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(3,2,1));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(6, mathOperation.sum());
     }
 
     @Test
     public void testSumTwoValues() {
-        mockAWSItemSource.getItems().add(1);
-        mockAWSItemSource.getItems().add(2);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(1,2));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(3, mathOperation.sum());
     }
 
     @Test
     public void testSumTwoValuesReverse() {
-        mockAWSItemSource.getItems().add(2);
-        mockAWSItemSource.getItems().add(1);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(2,1));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(3, mathOperation.sum());
     }
 
     @Test
     public void testAvgNormalOrder() {
-        mockAWSItemSource.getItems().add(5);
-        mockAWSItemSource.getItems().add(7);
-        mockAWSItemSource.getItems().add(17);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(8,9,10));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(9, mathOperation.avg());
     }
 
     @Test
     public void testAvgMixedOrder() {
-        mockAWSItemSource.getItems().add(17);
-        mockAWSItemSource.getItems().add(5);
-        mockAWSItemSource.getItems().add(7);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(10,8,9));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(9, mathOperation.avg());
     }
 
     @Test
     public void testMaxMixedOrder() {
-        mockAWSItemSource.getItems().add(170);
-        mockAWSItemSource.getItems().add(357);
-        mockAWSItemSource.getItems().add(7);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(3,357,1));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(357, mathOperation.max());
     }
 
     @Test
     public void testMaxPositiveValues() {
-        mockAWSItemSource.getItems().add(100);
-        mockAWSItemSource.getItems().add(500);
-        mockAWSItemSource.getItems().add(700);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(100,200,700));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals( 700, mathOperation.max());
     }
 
     @Test
     public void testMaxDifferentSignOrder() {
-        mockAWSItemSource.getItems().add(-100);
-        mockAWSItemSource.getItems().add(0);
-        mockAWSItemSource.getItems().add(700);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(700,-233,-157));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals( 700, mathOperation.max());
     }
 
     @Test
     public void testMaxNegativeValues() {
-        mockAWSItemSource.getItems().add(-100);
-        mockAWSItemSource.getItems().add(-500);
-        mockAWSItemSource.getItems().add(-700);
+        ItemSource mockAWSItemSource = mock(ItemSource.class);
+        when(mockAWSItemSource.getItems()).thenReturn(Arrays.asList(-300,-256,-100));
+        MathOperation mathOperation = new MathOperation(mockAWSItemSource);
         Assert.assertEquals(-100, mathOperation.max());
     }
 }
