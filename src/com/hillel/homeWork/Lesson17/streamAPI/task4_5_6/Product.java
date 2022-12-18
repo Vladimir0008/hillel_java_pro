@@ -64,7 +64,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\nProduct { " +
+        return "Product { " +
                 "type=" + type +
                 ", price=" + price.setScale(2, RoundingMode.FLOOR)+
                 ", isDiscountAbility=" + isDiscountAbility +
